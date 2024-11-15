@@ -3,20 +3,21 @@ import rasterio
 import numpy as np
 import matplotlib.pyplot as plt
 
-def analyze_elevation(dem_path, min_elevation=100, max_elevation=200, output_plot_path='output_elevation.png'):
+def analyze_elevation(dem_path, min_elevation=100, max_elevation=200, output_img_name='output_elevation.png'):
     """
-    Analyze elevation data and return summary statistics and file path of plot.
+    Analyze elevation data using DEM and return summary statistics and file path of plot.
 
     Args:
         dem_path (str): Path to the DEM file.
         min_elevation (int): Minimum elevation threshold.
         max_elevation (int): Maximum elevation threshold.
-        output_plot_path (str): File path to save the plot image.
+        output_img_name (str): Name of the plot image.
 
     Returns:
         dict: Dictionary containing summary statistics and plot path.
     """
     # Load DEM data
+    output_img_name = 'output_elevation.png'
     dem_data = rasterio.open(dem_path)
     elevation = dem_data.read(1)
 
@@ -35,12 +36,12 @@ def analyze_elevation(dem_path, min_elevation=100, max_elevation=200, output_plo
     plt.imshow(suitable_areas, cmap='Greens', extent=dem_data.bounds)
     plt.title(f'Suitable Areas for Development ({min_elevation}m-{max_elevation}m elevation)')
     plt.colorbar(label='1 = Suitable, 0 = Not Suitable')
-    plt.savefig(output_plot_path)
+    plt.savefig(output_img_name)
     plt.close()
 
     # Return structured data for LLM
     return {
         "total_suitable_area_km2": total_suitable_area_km2,
-        "plot_path": output_plot_path,
+        "plot_path": output_img_name,
         "message": f"Total area suitable for development is approximately {total_suitable_area_km2:.2f} km²."
     }
