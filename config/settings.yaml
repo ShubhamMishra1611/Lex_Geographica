@@ -1,0 +1,3 @@
+data_paths:
+  elevation: '../data/elevation.tif'
+  roads: '../data/roads.shp'
