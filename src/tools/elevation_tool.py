@@ -2,22 +2,24 @@ import geopandas as gpd
 import rasterio
 import numpy as np
 import matplotlib.pyplot as plt
-
-def analyze_elevation(dem_path, min_elevation=100, max_elevation=200, output_img_name='output_elevation.png'):
+from typing import Dict, Any
+def analyze_elevation(min_elevation: int=100, 
+                      max_elevation: int=200, 
+                      output_img_name: str='output_elevation.png')-> Dict[str, Any]:
     """
     Analyze elevation data using DEM and return summary statistics and file path of plot.
 
     Args:
-        dem_path (str): Path to the DEM file.
-        min_elevation (int): Minimum elevation threshold.
-        max_elevation (int): Maximum elevation threshold.
-        output_img_name (str): Name of the plot image.
-
+        min_elevation int: Minimum elevation threshold.
+        max_elevation int: Maximum elevation threshold.
+        output_img_name str: Name of the plot image.
     Returns:
         dict: Dictionary containing summary statistics and plot path.
     """
     # Load DEM data
     output_img_name = 'output_elevation.png'
+    dem_path = '/home/stemmets/Desktop/projllm/lexgis/Lex_Geographica/data/elevation.tif'
+    print(f"LOGG: {min_elevation = }; {max_elevation = }")
     dem_data = rasterio.open(dem_path)
     elevation = dem_data.read(1)
 

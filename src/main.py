@@ -10,7 +10,7 @@ st.title("Urban Planning Map Data Analysis")
 
 # File inputs
 dem_path = st.file_uploader("Upload DEM File", type=["tif"])
-road_path = st.file_uploader("Upload Road Shapefile", type=["shp"])
+# road_path = st.file_uploader("Upload Road Shapefile", type=["shp"])
 
 # Query input
 query = st.text_input("Enter your query (e.g., 'Analyze elevation', 'Check road connectivity')")
@@ -31,10 +31,10 @@ if query:
         # st.text(elevation_result["message"])
         # st.image(elevation_result["plot_path"])
 
-    elif "road" in query.lower() and road_path:
-        st.write("Analyzing road infrastructure...")
-        road_result = analyze_roads(road_path)
-        st.text(road_result["message"])
+    # elif "road" in query.lower() and road_path:
+    #     st.write("Analyzing road infrastructure...")
+    #     road_result = analyze_roads(road_path)
+    #     st.text(road_result["message"])
     else:
         st.warning("Please upload the relevant file(s) for your query.")
 else:

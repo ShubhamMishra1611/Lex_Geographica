@@ -30,8 +30,6 @@ def DEM_agent(user_query: str):
     template = """
     You are a DEM map reading agent. Your task is to help in finding relevant regions in DEM map as per user query.
     User query is : {user_query}
-
-    At the end tell what is the total useful area
     """
 
     prompt_template = PromptTemplate(
@@ -40,7 +38,8 @@ def DEM_agent(user_query: str):
     tools_for_agent = [
         Tool(name="Elevation Analyzer",
              func=analyze_elevation,
-             description="Find the relevant region in DEM from min_elevation to max_elevation"
+             description="Find the relevant region in DEM from min_elevation to max_elevation",
+            #  response_format = "content_and_artifact"
         )
     ]
 
