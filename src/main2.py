@@ -52,6 +52,7 @@ def get_elevation_artifact(llm_response):
 def process_elevation_request(query: str):
     """Process elevation analysis request and return both LLM response and artifact"""
     llm_response = llm_with_tools.invoke(query)
+    print(f"{llm_response = }")
     result = get_elevation_artifact(llm_response)
     return result
 

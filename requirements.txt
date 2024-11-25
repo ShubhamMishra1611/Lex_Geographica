@@ -6,3 +6,10 @@ langchain-core
 streamlit
 langchain-google-genai
 python-dotenv
+matplotlib
+python-dotenv
+folium 
+osmnx 
+geopy 
+networkx
+scikit-learn
