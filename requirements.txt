@@ -9,7 +9,7 @@ python-dotenv
 matplotlib
 python-dotenv
 folium 
-osmnx 
+osmnx==1.9.4
 geopy 
 networkx
 scikit-learn
